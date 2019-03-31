@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+	<% if @recipe.image? %>
+		<%= image_tag @recipe.image.url, class: "recipe-show" %>
+	<% end %>
 <p>
   <strong>Title:</strong>
   <%= @recipe.title %>
@@ -18,13 +20,17 @@
 	<% end %>
 </ul>
 
-<h3>Steps</h3>
 
+
+
+<h3>Steps</h3>
 <ol>
 	<% for @step in @recipe.steps %>
 			<li><%= @step.direction %></li>
 	<% end %>
 </ol>
+
+
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>
